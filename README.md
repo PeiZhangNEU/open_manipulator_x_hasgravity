@@ -80,3 +80,5 @@ action dim = 4 包括四个关节的delta控制量
 
 更新了环境的目标点产生策略，更新了observation_space
 已经更新了结合HER的多目标点跟踪训练:在DRLib下的`train_open_torh.py` 和 `run_realarm.py`中
+
+之前的库，仿真环境没有重力，更新之后，机械臂仿真关节自锁，可以加重力了
