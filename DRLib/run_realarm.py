@@ -109,7 +109,7 @@ def launch(net, args):
               device=device,
               )
 
-    net.load_simple_network('/home/pp/deeplearning/open_manipulator_x_RL/DRLib/actor.pth')
+    net.load_simple_network('/home/zp/deeplearning/open_manipulator_x_hasgravity/DRLib/actor.pth')
     # restore_path = 'HER_DRLib_exps/2021-02-22_HER_TD3Torch_FetchPush-v1/2021-02-22_14-46-52-HER_TD3Torch_FetchPush-v1_s123/actor.pth'
     # net.load_simple_network(restore_path)
     # trainer(net, env, args)

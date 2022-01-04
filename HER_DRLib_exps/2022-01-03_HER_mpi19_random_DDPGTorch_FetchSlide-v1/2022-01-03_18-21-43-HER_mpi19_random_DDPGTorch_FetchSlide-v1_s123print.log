@@ -1,0 +1,27 @@
+[36;1mSaving config:
+[0m
+{
+    "args":	null,
+    "env":	null,
+    "exp_name":	"HER_mpi19_random_DDPGTorch_FetchSlide-v1",
+    "logger":	null,
+    "logger_kwargs":	{
+        "exp_name":	"HER_mpi19_random_DDPGTorch_FetchSlide-v1",
+        "output_dir":	"HER_DRLib_exps/2022-01-03_HER_mpi19_random_DDPGTorch_FetchSlide-v1/2022-01-03_18-21-43-HER_mpi19_random_DDPGTorch_FetchSlide-v1_s123"
+    },
+    "net":	null
+}
+---------------------------------------
+|             Epoch |               0 |
+|             EpRet |            -200 |
+|         EpRealRet |            -200 |
+|         TestEpRet |            -188 |
+|         AverageQ1 |          -0.611 |
+|             StdQ1 |            1.09 |
+|             MaxQ1 |            2.41 |
+|             MinQ1 |           -10.9 |
+|                Q2 |          -0.611 |
+|       TestSuccess |               0 |
+| TotalEnvInteracts |           1e+04 |
+|         TotalTime |            55.6 |
+---------------------------------------

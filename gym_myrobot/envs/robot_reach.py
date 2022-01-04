@@ -154,24 +154,14 @@ class ReachEnv(gym.GoalEnv):
         #                                  orn_target, useFixedBase=1)
         
         if self.targetUid == -1:  
-            self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_pick.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
+            self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_reach.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
                                         [xpos_target, ypos_target, zpos_target],
                                          orn_target, useFixedBase=1)                         # 目标方块位置固定，如果不使用useFixedBase=1，目标方块会坠落！
         else:
             p.removeBody(self.targetUid)
-            self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_pick.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
+            self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_reach.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
                                         [xpos_target, ypos_target, zpos_target],
                                          orn_target, useFixedBase=1)
-
-        # 下面这个函数 setCollisionFilterPair 是取消碰撞检测，因为我们的机械臂设定了一个目标位置用小红点表示出来，但是这个是个虚拟的点，不需要发生碰撞！
-        # body1，body2，body1的link序号，body2的link序号，0代表取消碰撞检测      避免了AB的对应link的碰撞！都取了倒数第一个link
-        p.setCollisionFilterPair(self.targetUid, self._robot.pandaUid, -2, -1, 0)
-        p.setCollisionFilterPair(self.targetUid, self._robot.pandaUid, -3, -1, 0)
-        p.setCollisionFilterPair(self.targetUid, self._robot.pandaUid, -4, -1, 0)
-        p.setCollisionFilterPair(self.targetUid, self._robot.pandaUid, -5, -1, 0)
-        p.setCollisionFilterPair(self.targetUid, self._robot.pandaUid, -6, -1, 0)
-        p.setCollisionFilterPair(self.targetUid, self._robot.pandaUid, -7, -1, 0)
-        p.setCollisionFilterPair(self.targetUid, self._robot.pandaUid, -8, -1, 0)
 
 
         self.goal=np.array([xpos_target,ypos_target,zpos_target])

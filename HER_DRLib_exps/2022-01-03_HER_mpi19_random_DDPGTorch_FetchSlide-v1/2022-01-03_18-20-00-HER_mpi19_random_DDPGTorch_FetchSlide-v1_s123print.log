@@ -1,0 +1,15 @@
+[36;1mSaving config:
+[0m
+{
+    "args":	null,
+    "env":	null,
+    "exp_name":	"HER_mpi19_random_DDPGTorch_FetchSlide-v1",
+    "logger":	null,
+    "logger_kwargs":	{
+        "exp_name":	"HER_mpi19_random_DDPGTorch_FetchSlide-v1",
+        "output_dir":	"HER_DRLib_exps/2022-01-03_HER_mpi19_random_DDPGTorch_FetchSlide-v1/2022-01-03_18-20-00-HER_mpi19_random_DDPGTorch_FetchSlide-v1_s123"
+    },
+    "net":	null
+}
+epoch: 0 	ep: 10 	ep_rew: -185.0 	time: 1.048 	done: 15.0
+epoch: 0 	ep: 13 	ep_rew: -105.0 	time: 1.035 	done: 95.0
