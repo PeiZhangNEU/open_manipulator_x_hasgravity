@@ -148,20 +148,20 @@ class ReachEnv(gym.GoalEnv):
         ang_target = 3.14 * 0.5 + 3.1415925438 * random.random()
         orn_target = p.getQuaternionFromEuler([0, 0, ang_target])      
 
-        # # 这里的if else 语句是为了每次reset都移除上次产生的目标点，不然会有好多个目标点一次次累加出现在屏幕上
-        # self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_pick.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
-        #                                 [xpos_target, ypos_target, zpos_target],
-        #                                  orn_target, useFixedBase=1)
-        
-        if self.targetUid == -1:  
-            self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_reach.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
-                                        [xpos_target, ypos_target, zpos_target],
-                                         orn_target, useFixedBase=1)                         # 目标方块位置固定，如果不使用useFixedBase=1，目标方块会坠落！
-        else:
-            p.removeBody(self.targetUid)
-            self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_reach.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
+        # 这里的if else 语句是为了每次reset都移除上次产生的目标点，不然会有好多个目标点一次次累加出现在屏幕上
+        self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_reach.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
                                         [xpos_target, ypos_target, zpos_target],
                                          orn_target, useFixedBase=1)
+        
+        # if self.targetUid == -1:  
+        #     self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_reach.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
+        #                                 [xpos_target, ypos_target, zpos_target],
+        #                                  orn_target, useFixedBase=1)                         # 目标方块位置固定，如果不使用useFixedBase=1，目标方块会坠落！
+        # else:
+        #     p.removeBody(self.targetUid)
+        #     self.targetUid = p.loadURDF("./gym_myrobot/envs/cube_small_target_reach.urdf",    # 根据这个urdf来改我们之前的末端小方块的urdf
+        #                                 [xpos_target, ypos_target, zpos_target],
+        #                                  orn_target, useFixedBase=1)
 
 
         self.goal=np.array([xpos_target,ypos_target,zpos_target])

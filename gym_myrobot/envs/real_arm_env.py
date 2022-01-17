@@ -167,7 +167,7 @@ class RealarmEnv(gym.GoalEnv):
         # 先获取到要发送的请求的数据格式的模板, 比如我要做SetJointPosition,也就是'/goal_joint_space_path'服务。这个服务只能动arm的关节
         joint_pose_req = SetJointPositionRequest()
         joint_pose_req.planning_group = ''
-        joint_pose_req.path_time = np.float64(3.0)
+        joint_pose_req.path_time = np.float64(1.0)
         # jointpose是一个子类, 根据srv的说明，一定要把各种格式转换为对应格式才行！比如要求的是float64，Python默认的是float32，所以需要更改一下！
         joint_pose = JointPosition()
         joint_pose.joint_name = ['joint1','joint2','joint3','joint4']
