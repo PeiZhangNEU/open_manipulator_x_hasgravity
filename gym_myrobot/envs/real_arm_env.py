@@ -18,6 +18,7 @@ from rospy import client
 from open_manipulator_msgs.msg import KinematicsPose
 from open_manipulator_msgs.msg import JointPosition
 from sensor_msgs.msg import JointState
+from ar_track_alvar_msgs.msg import AlvarMarkers
 import os
 
 # 导入random是为了产生目标位置
@@ -140,8 +141,22 @@ class RealarmEnv(gym.GoalEnv):
             return -(d > self.distance_threshold).astype(np.float32)
         else:
             return -d
-
     
+
+    def get_ar_pose(self, now_pose):
+        '''得到ar的位置'''
+        data_pose_ar = rospy.wait_for_message('/ar_pose_marker', AlvarMarkers, timeout=None)
+        if len(data_pose_ar.markers) >= 1:
+            ar_pose = [data_pose_ar.markers[0].pose.pose.position.x, data_pose_ar.markers[0].pose.pose.position.y, data_pose_ar.markers[0].pose.pose.position.z]
+            ar_pose = np.array(ar_pose)
+            end_orn_quaternion = [data_pose_ar.markers[0].pose.pose.orientation.x, data_pose_ar.markers[0].pose.pose.orientation.y, data_pose_ar.markers[0].pose.pose.orientation.z, data_pose_ar.markers[0].pose.pose.orientation.w]
+            end_orn = p.getEulerFromQuaternion(end_orn_quaternion)
+            end_orn = np.array(end_orn)
+        else:
+            ar_pose = now_pose
+            # end_orn = 
+        return ar_pose
+
     def operate_gripper(self, motor):
         '''单独为操作gripper写一个方法'''
         gripper_pose_req = SetJointPositionRequest()
